@@ -1,4 +1,4 @@
-//% color=#cc87a8 weight=97 icon=\uf0c0
+//% color=#cc87a8 weight=97 icon="\uf0c0"
 //% groups='["Multiplayer"]'
 namespace Multiplayer {
     /**
