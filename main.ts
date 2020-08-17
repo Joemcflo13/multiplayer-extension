@@ -1,4 +1,4 @@
-//% color=#7a2a2a
+//% color=#cc87a8 weight=97 icon=\uf0c0
 //% groups='["Multiplayer"]'
 namespace Multiplayer {
     /**
@@ -8,5 +8,11 @@ namespace Multiplayer {
     export function setup(num: number): void {
         radio.setGroup(num)
     }
+    /**
+     * 
+     */
+    //% blockId= block=""
+    export function (): {
 
+    }
 }
