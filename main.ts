@@ -4,7 +4,7 @@ namespace Multiplayer {
     /**
      * uses radio to set up the signal
      */
-    //% blockId=setup block="Radio number: $num"
+    //% blockId=setup block="Radio number: $num" weight=100
     //% num.min=0 num.max=255
     export function setup(num: number): void {
         radio.setGroup(num)
@@ -12,7 +12,7 @@ namespace Multiplayer {
     /**
      * creats a character
      */
-    //% blockId=create block="creat character where? X $x Y $y"
+    //% blockId=create block="creat character where? X $x Y $y" weight=99
     //% x.min=0 x.max=4 y.min=0 y.max=4
     export function create(x: number, y: number): void {
         let sprite = game.createSprite(x, y)
