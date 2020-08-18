@@ -4,7 +4,7 @@ namespace Multiplayer {
     /**
      * uses radio to set up the signal
      */
-    //% blockId=setup block="Radio number: $num" color=#e80e9f
+    //% blockId=setup block="Radio number: $num"
     //% num.min=0 num.max=255
     export function setup(num: number): void {
         radio.setGroup(num)
