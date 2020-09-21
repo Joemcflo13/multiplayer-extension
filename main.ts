@@ -1,9 +1,7 @@
 //% color=#24823d weight=75 icon="\uf0c0"
 //% groups='["Multiplayer"]'
 namespace Multiplayer {
-    
     let sprite: game.LedSprite
-
     /**
      * uses radio to set up the signal
      */
@@ -15,10 +13,9 @@ namespace Multiplayer {
     /**
      * creats a character
      */
-    //% blockSetVariable=sprite
     //% blockId=create block="create $num=variables_get(sprite) where? X $x Y $y" weight=99
     //% x.min=0 x.max=4 y.min=0 y.max=4
-    export function create(x: number, y: number, num: number): void {
+    export function create(num: number, x: number, y: number): void {
         let sprite = game.createSprite(x, y)
     }
     /**
