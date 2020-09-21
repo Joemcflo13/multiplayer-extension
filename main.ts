@@ -1,6 +1,9 @@
-//% color=#cc87a8 weight=96 icon="\uf0c0"
+//% color=#24823d weight=75 icon="\uf0c0"
 //% groups='["Multiplayer"]'
 namespace Multiplayer {
+    
+    let sprite: game.LedSprite
+
     /**
      * uses radio to set up the signal
      */
@@ -12,25 +15,35 @@ namespace Multiplayer {
     /**
      * creats a character
      */
-    //% blockId=create block="creat character where? X $x Y $y" weight=99
+    //% blockSetVariable=sprite
+    //% blockId=create block="create $num=variables_get(sprite) where? X $x Y $y" weight=99
     //% x.min=0 x.max=4 y.min=0 y.max=4
-    export function create(x: number, y: number): void {
+    export function create(x: number, y: number, num: number): void {
         let sprite = game.createSprite(x, y)
     }
     /**
      * use this block when you move the character left
      */
-    //% blockId=leftse block="Character left by $left"
-    //% left.min=1 left.max=4
-    export function charleft(left: number): void {
-        sprite.set(LedSpriteProperty.X, left) 
-        radio.sendNumber(0)
+    //% blockId=move_send block="Move $num=variables_get(sprite) with gestures" weight=98
+    export function movesend(num: number): void {
+        
+        if (!sprite) {
+            if (Gesture.LogoDown) {
+                sprite.change(LedSpriteProperty.Y, -1)
+            } else if (Gesture.LogoUp) {
+                sprite.change(LedSpriteProperty.Y, 1)
+            } else if (Gesture.TiltLeft) {
+                sprite.change(LedSpriteProperty.X, -1)
+            } else if (Gesture.TiltRight) {
+                sprite.change(LedSpriteProperty.X, 1)
+            }
+        }
     }
     /**
-     * recieves the incoming left and moves player
+     * Put this in the on number recive block.
      */
-    //% blockId=leftre block="left receive"
-    export function leftse(): void {
+    //% blockId=move_recive block="Move $num=variables_get(othersprite) recive" weight=97
+    export function moverecive(): void {
         
     }
 }
