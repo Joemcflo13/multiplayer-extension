@@ -29,12 +29,16 @@ namespace Multiplayer {
         if (!player) {
             if (Gesture.LogoDown) {
                 player.change(LedSpriteProperty.Y, -1)
+                radio.sendNumber(1)
             } else if (Gesture.LogoUp) {
                 player.change(LedSpriteProperty.Y, 1)
+                radio.sendNumber(2)
             } else if (Gesture.TiltLeft) {
                 player.change(LedSpriteProperty.X, -1)
+                radio.sendNumber(3)
             } else if (Gesture.TiltRight) {
                 player.change(LedSpriteProperty.X, 1)
+                radio.sendNumber(4)
             }
         }
     }
@@ -43,6 +47,18 @@ namespace Multiplayer {
      */
     //% blockId=move_recive block="Move $num=variables_get(player2) recive" weight=97
     export function moverecive(num: number): void {
-        
+        if (num == 1) {
+            player2.change(LedSpriteProperty.Y, -1)
+        } else if (num == 2) {
+            player2.change(LedSpriteProperty.Y, 1)
+        } else if (num == 3) {
+            player2.change(LedSpriteProperty.X, -1)
+        } else if (num == 4) {
+            player2.change(LedSpriteProperty.X, 1)
+        }
     }
+    /**
+     * create player two where?
+     */
+    //%
 }
