@@ -1,7 +1,8 @@
 //% color=#24823d weight=75 icon="\uf0c0"
 //% groups='["Multiplayer"]'
 namespace Multiplayer {
-    let sprite: game.LedSprite
+    let player: game.LedSprite
+    let player2: game.LedSprite
     /**
      * uses radio to set up the signal
      */
@@ -12,35 +13,36 @@ namespace Multiplayer {
     }
     /**
      * creats a character
+     * @param x Side to side. eg: 2
+     * @param y Up and down. eg: 2
      */
-    //% blockId=create block="create $num=variables_get(sprite) where? X $x Y $y" weight=99
+    //% blockId=create block="create $num=variables_get(player) where? X $x Y $y" weight=99
     //% x.min=0 x.max=4 y.min=0 y.max=4
     export function create(num: number, x: number, y: number): void {
-        let sprite = game.createSprite(x, y)
+        let player = game.createSprite(x, y)
     }
     /**
-     * use this block when you move the character left
+     * use this block when you move the character left. put this in the forever block.
      */
-    //% blockId=move_send block="Move $num=variables_get(sprite) with gestures" weight=98
+    //% blockId=move_send block="Move $num=variables_get(player) with gestures" weight=98
     export function movesend(num: number): void {
-        
-        if (!sprite) {
+        if (!player) {
             if (Gesture.LogoDown) {
-                sprite.change(LedSpriteProperty.Y, -1)
+                player.change(LedSpriteProperty.Y, -1)
             } else if (Gesture.LogoUp) {
-                sprite.change(LedSpriteProperty.Y, 1)
+                player.change(LedSpriteProperty.Y, 1)
             } else if (Gesture.TiltLeft) {
-                sprite.change(LedSpriteProperty.X, -1)
+                player.change(LedSpriteProperty.X, -1)
             } else if (Gesture.TiltRight) {
-                sprite.change(LedSpriteProperty.X, 1)
+                player.change(LedSpriteProperty.X, 1)
             }
         }
     }
     /**
-     * Put this in the on number recive block.
+     * Put this in the on number recive block. or else it wont work.
      */
-    //% blockId=move_recive block="Move $num=variables_get(othersprite) recive" weight=97
-    export function moverecive(): void {
+    //% blockId=move_recive block="Move $num=variables_get(player2) recive" weight=97
+    export function moverecive(num: number): void {
         
     }
 }
