@@ -14,16 +14,18 @@ namespace Multiplayer {
     }
 
     /**
-     * creats a character
-     * @param x Side to side. eg: 2
-     * @param y Up and down. eg: 2
+     * Creates a character
      */
     export class Player { }
     //% blockSetVariable=player
     //% blockId=create_player group="Set-up"
     //% block="Create sprite at X $x Y %y" weight=99
     //% x.min=0 x.max=4 y.min=0 y.max=4
-    export function create(x: number, y: number): Player {
+    /**
+     * @param x Side to side. eg: 0
+     * @param y Up and down. eg: 2
+     */
+    export function createPlayer(x: number, y: number): Player {
         let player = game.createSprite(x, y)
         return undefined;
     }
@@ -68,14 +70,16 @@ namespace Multiplayer {
     }
     /**
      * Where do you want to create player2?
-     * @param x the side to side. eg: 2
-     * @param y the up and down. eg: 2
      */
     export class Player2 { }
     //% blockSetVariable=player2
     //% blockId=create_player2 group="Set-up"
     //% block="Create sprite at X $x Y %y" weight=98
     //% x.min=0 x.max=4 y.min=0 y.max=4
+    /**
+     * @param x Side to side. eg: 4
+     * @param y Up and down. eg: 2
+     */
     export function createplayer2(x: number, y: number): Player2 {
         let player2 = game.createSprite(x, y)
         return undefined;
