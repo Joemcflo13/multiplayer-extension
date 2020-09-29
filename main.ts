@@ -36,19 +36,29 @@ namespace Multiplayer {
     //% blockId=move_send block="Move $sprite=variables_get(player) with gestures" 
     //% weight=97 group="Moving Players"
     export function movesend(sprite: any): void {
-            while (true) {
+            if (!player) {
+                basic.showLeds(`
+                    # # . # #
+                    # # . # #
+                    . . . . .
+                    . # # # .
+                    # . . . #
+                `)
+                control.reset()
+            }
+            if (player) {
                 if (Gesture.LogoDown) {
                     player.change(LedSpriteProperty.Y, -1)
-                    
+                    radio.sendNumber(1)
                 } else if (Gesture.LogoUp) {
                     player.change(LedSpriteProperty.Y, 1)
-                    
+                    radio.sendNumber(2)
                 } else if (Gesture.TiltLeft) {
                     player.change(LedSpriteProperty.X, -1)
-                    
+                    radio.sendNumber(3)
                 } else if (Gesture.TiltRight) {
                     player.change(LedSpriteProperty.X, 1)
-                    
+                    radio.sendNumber(4)
                 }
             }
         }
@@ -56,17 +66,29 @@ namespace Multiplayer {
     /**
      * Put this in the on number recive block. or else it wont work.
      */
-    //% blockId=move_recive block="Move $num=variables_get(player2) recive"
+    //% blockId=move_recive block="Move $sprite2=variables_get(player2) $receive=variables_get(receivedNumber)"
     //% weight=96 group="Moving Players"
-    export function moverecive(num: Player2): void {
-        if (num == 1) {
-            player2.change(LedSpriteProperty.Y, -1)
-        } else if (num == 2) {
-            player2.change(LedSpriteProperty.Y, 1)
-        } else if (num == 3) {
-            player2.change(LedSpriteProperty.X, -1)
-        } else if (num == 4) {
-            player2.change(LedSpriteProperty.X, 1)
+    export function movereceive(sprite2: any, receive: number): void {
+        if (!receive) {
+            basic.showLeds(`
+            # # . # #
+            # # . # #
+            . . . . .
+            . # # # .
+            # . . . #
+            `)
+            control.reset()
+        }
+        if (receive){
+            if (receive == 1) {
+                player2.change(LedSpriteProperty.Y, -1)
+            } else if (receive == 2) {
+                player2.change(LedSpriteProperty.Y, 1)
+            } else if (receive == 3) {
+                player2.change(LedSpriteProperty.X, -1)
+            } else if (receive == 4) {
+                player2.change(LedSpriteProperty.X, 1)
+            }
         }
     }
     /**
