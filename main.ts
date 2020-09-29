@@ -33,25 +33,26 @@ namespace Multiplayer {
     /**
      * use this block when you move the character left. put this in the forever block.
      */
-    //% blockId=move_send block="Move $num=variables_get(player) with gestures" 
+    //% blockId=move_send block="Move $sprite=variables_get(player) with gestures" 
     //% weight=97 group="Moving Players"
-    export function movesend(num: Player): void {
+    export function movesend(sprite: any): void {
             while (true) {
-            if (Gesture.LogoDown) {
-                player.change(LedSpriteProperty.Y, -1)
-                radio.sendNumber(1)
-            } else if (Gesture.LogoUp) {
-                player.change(LedSpriteProperty.Y, 1)
-                radio.sendNumber(2)
-            } else if (Gesture.TiltLeft) {
-                player.change(LedSpriteProperty.X, -1)
-                radio.sendNumber(3)
-            } else if (Gesture.TiltRight) {
-                player.change(LedSpriteProperty.X, 1)
-                radio.sendNumber(4)
+                if (Gesture.LogoDown) {
+                    player.change(LedSpriteProperty.Y, -1)
+                    
+                } else if (Gesture.LogoUp) {
+                    player.change(LedSpriteProperty.Y, 1)
+                    
+                } else if (Gesture.TiltLeft) {
+                    player.change(LedSpriteProperty.X, -1)
+                    
+                } else if (Gesture.TiltRight) {
+                    player.change(LedSpriteProperty.X, 1)
+                    
+                }
             }
         }
-    }
+        
     /**
      * Put this in the on number recive block. or else it wont work.
      */
